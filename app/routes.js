@@ -1,9 +1,9 @@
 /**
  * define different layouts for members and users
  */
-var headerUserTmpl = 'header-user.html';
-var headerMemberTmpl = 'header-member.html';
-var footerTmpl = 'footer.html';
+var headerUserTmpl = '_layouts/header-user.html';
+var headerMemberTmpl = '_layouts/header-member.html';
+var footerTmpl = '_layouts/footer.html';
 
 
 /**
@@ -16,15 +16,19 @@ iwriterApp.config(['$stateProvider', '$urlRouterProvider',
                 url:'/login',
                 views:{
                     'content' :{
-                        templateUrl: 'login/login.html',
+                        templateUrl: 'pages/login/login.html',
                         controller: 'loginController'
                     },
                     'header' : {
-                        templateUrl: 'layouts/'+headerUserTmpl,
+                        templateUrl: 'pages/'+headerUserTmpl,
                         //controller: 'loginController'
                     },
                     'footer' : {
-                        templateUrl: 'layouts/'+footerTmpl,
+                        templateUrl: 'pages/'+footerTmpl,
+                        //controller: 'loginController'
+                    },
+                    'footerScripts': {
+                        templateUrl: 'pages/login/footerScripts.html',
                         //controller: 'loginController'
                     }
                 }
