@@ -81,15 +81,27 @@
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
+<!-- Full Body Container -->
+<div id="container">
 
+    <div ui-view="header"></div>
 
-<div ui-view="header"></div>
+    <div ui-view="content"></div>
 
-<div ui-view="content"></div>
+    <div ui-view="footer"></div>
 
-<div ui-view="footer"></div>
+</div>
 
+<!-- Go To Top Link -->
+<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 
+<!-- Loader Spinner -->
+<!--<div id="loader">-->
+    <!--<div class="spinner">-->
+        <!--<div class="dot1"></div>-->
+        <!--<div class="dot2"></div>-->
+    <!--</div>-->
+<!--</div>-->
 
 
 
