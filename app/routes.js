@@ -1,3 +1,14 @@
+/**
+ * define different layouts for members and users
+ */
+var headerUserTmpl = 'header-user.html';
+var headerMemberTmpl = 'header-member.html';
+var footerTmpl = 'footer.html';
+
+
+/**
+ * Define routes and corresponded route params
+ */
 iwriterApp.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider){
         $stateProvider
@@ -9,12 +20,12 @@ iwriterApp.config(['$stateProvider', '$urlRouterProvider',
                         controller: 'loginController'
                     },
                     'header' : {
-                        templateUrl: 'layouts/header.html',
-                        controller: 'loginController'
+                        templateUrl: 'layouts/'+headerUserTmpl,
+                        //controller: 'loginController'
                     },
                     'footer' : {
-                        templateUrl: 'layouts/footer.html',
-                        controller: 'loginController'
+                        templateUrl: 'layouts/'+footerTmpl,
+                        //controller: 'loginController'
                     }
                 }
             })
