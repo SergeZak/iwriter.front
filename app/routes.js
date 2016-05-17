@@ -4,6 +4,7 @@
 var headerUserTmpl = '_layouts/header-user.html';
 var headerMemberTmpl = '_layouts/header-member.html';
 var footerTmpl = '_layouts/footer.html';
+var themeFooterScripts = '_layouts/theme-footer-scripts.html';
 
 
 /**
@@ -12,6 +13,27 @@ var footerTmpl = '_layouts/footer.html';
 iwriterApp.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider){
         $stateProvider
+            .state('home',{
+                url: '/',
+                views:{
+                    'header' : {
+                        templateUrl: 'pages/'+headerUserTmpl,
+                        //controller: 'loginController'
+                    },
+                    'content' :{
+                        templateUrl: 'pages/home/home.html',
+                        controller: 'homeController'
+                    },
+                    'footer' : {
+                        templateUrl: 'pages/'+footerTmpl,
+                        //controller: 'loginController'
+                    },
+                    'themeFooterScripts':{
+                        templateUrl: 'pages/'+themeFooterScripts,
+                    }
+                }
+            })
+
             .state('login',{
                 url:'/login',
                 views:{
@@ -27,11 +49,16 @@ iwriterApp.config(['$stateProvider', '$urlRouterProvider',
                         templateUrl: 'pages/'+footerTmpl,
                         //controller: 'loginController'
                     },
-                    'footerScripts': {
-                        templateUrl: 'pages/login/footerScripts.html',
-                        //controller: 'loginController'
+                    'themeFooterScripts':{
+                        templateUrl: 'pages/'+themeFooterScripts,
                     }
                 }
             })
+
+
+        $urlRouterProvider
+            .when('', ['$state','$match', function ($state, $match) {
+                $state.go('home');
+            }]);
     }
 ]);
