@@ -10,15 +10,24 @@ var themeFooterScripts = '_layouts/theme-footer-scripts.html';
 /**
  * Define routes and corresponded route params
  */
-iwriterApp.config(['$stateProvider', '$urlRouterProvider',
-    function($stateProvider, $urlRouterProvider){
+iwriterApp.config(['$stateProvider', '$urlRouterProvider', '$authProvider',
+    function($stateProvider, $urlRouterProvider, $authProvider){
+
+        /**  Specific cases of URL  **/
+        $urlRouterProvider
+            .when('', ['$state','$match', function ($state, $match) {
+                $state.go('home');
+            }])
+        //.otherwise('/');
+
+
+        /**  States  **/
         $stateProvider
             .state('home',{
                 url: '/',
                 views:{
                     'header' : {
                         templateUrl: 'pages/'+headerUserTmpl,
-                        //controller: 'loginController'
                     },
                     'content' :{
                         templateUrl: 'pages/home/home.html',
@@ -26,7 +35,6 @@ iwriterApp.config(['$stateProvider', '$urlRouterProvider',
                     },
                     'footer' : {
                         templateUrl: 'pages/'+footerTmpl,
-                        //controller: 'loginController'
                     },
                     'themeFooterScripts':{
                         templateUrl: 'pages/'+themeFooterScripts,
@@ -37,17 +45,15 @@ iwriterApp.config(['$stateProvider', '$urlRouterProvider',
             .state('login',{
                 url:'/login',
                 views:{
+                    'header' : {
+                        templateUrl: 'pages/'+headerUserTmpl,
+                    },
                     'content' :{
                         templateUrl: 'pages/login/login.html',
                         controller: 'loginController'
                     },
-                    'header' : {
-                        templateUrl: 'pages/'+headerUserTmpl,
-                        //controller: 'loginController'
-                    },
                     'footer' : {
                         templateUrl: 'pages/'+footerTmpl,
-                        //controller: 'loginController'
                     },
                     'themeFooterScripts':{
                         templateUrl: 'pages/'+themeFooterScripts,
@@ -55,10 +61,26 @@ iwriterApp.config(['$stateProvider', '$urlRouterProvider',
                 }
             })
 
+            .state('dashboard-client',{
+                url: '/client-dashboard',
+                views:{
+                    'header' : {
+                        templateUrl: 'pages/'+headerMemberTmpl,
+                    },
+                    'content' :{
+                        templateUrl: 'pages/dashboard-client/dashboard-client.html',
+                        controller: 'dashboardClientController'
+                    },
+                    'footer' : {
+                        templateUrl: 'pages/'+footerTmpl,
+                    },
+                    'themeFooterScripts':{
+                        templateUrl: 'pages/'+themeFooterScripts,
+                    }
+                }
+            });
 
-        $urlRouterProvider
-            .when('', ['$state','$match', function ($state, $match) {
-                $state.go('home');
-            }]);
+        /* Authentication is available via satellizer module */
+        $authProvider.loginUrl = 'http://iwriter.back/api/users/login';
     }
 ]);

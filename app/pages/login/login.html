@@ -18,12 +18,12 @@
         <form class="register-request-form login-form">
             <div class="row">
                 <div class="col-md-12">
-                    <input type="text" class="fl-name-input text-input" placeholder="Username" name="username">
+                    <input type="text" class="fl-name-input text-input" placeholder="Username" ng-model="username" >
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <input type="password" class="pass-input text-input" placeholder="Password" name="password">
+                    <input type="password" class="pass-input text-input" placeholder="Password" ng-model="passw">
                 </div>
             </div>
             <div class="row">
@@ -33,7 +33,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12" style="text-align: center">
-                    <button type="submit" class="login-btn">LOGIN</button>
+                    <button class="login-btn" ng-click="login()">LOGIN</button>
                 </div>
             </div>
         </form>

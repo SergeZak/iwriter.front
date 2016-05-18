@@ -1,7 +1,6 @@
 'use strict';
 
 var iwriterApp = angular.module('iwriterApp', [
-    'ui.router'
+    'ui.router',
+    'satellizer',
 ]);
-
-
